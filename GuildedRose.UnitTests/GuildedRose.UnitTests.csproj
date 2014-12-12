@@ -45,4 +45,10 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <ProjectReference Include="..\GuildedRose\GuildedRose.csproj">
+      <Project>{cb41ef38-823f-11e4-be41-3c15c2bea220}</Project>
+      <Name>GuildedRose</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
