@@ -41,6 +41,8 @@
     <Compile Include="GivenAConjuredItem.cs" />
     <Compile Include="GivenANormalItem.cs" />
     <Compile Include="GivenAgedBrie.cs" />
+    <Compile Include="GivenSeveralItems.cs" />
+    <Compile Include="GivenSulfuras.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
