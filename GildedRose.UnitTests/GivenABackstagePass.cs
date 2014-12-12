@@ -8,11 +8,12 @@ namespace GildedRose.UnitTests
 	{
 		static String BACKSTAGE_PASS = "Backstage passes to a TAFKAL80ETC concert";
 		
-		private Item UpdateFrom(int initialSellIn, int initialQuality) {
+		private Item UpdateFrom(int initialSellIn, int initialQuality) 
+		{
 			Item item = new Item(BACKSTAGE_PASS, initialSellIn, initialQuality);
 			List<Item> items = new List<Item>();
 			items.Add(item);
-			GildedRose.updateQuality(items);
+			GildedRose.UpdateQuality(items);
 			return item;
 		}
 

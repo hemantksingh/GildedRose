@@ -8,51 +8,58 @@ namespace GildedRose.UnitTests
 
 		static String AGED_BRIE = "Aged Brie";
 		
-		private Item updateFrom(int initialSellIn, int initialQuality) {
+		private Item updateFrom(int initialSellIn, int initialQuality) 
+		{
 			Item item = new Item(AGED_BRIE, initialSellIn, initialQuality);
 			List<Item> items = new List<Item>();
 			items.Add(item);
-			GildedRose.updateQuality(items);
+			GildedRose.UpdateQuality(items);
 			return item;
 		}
 
 		[Fact]
-		public void beforeSellDate() {
+		public void BeforeSellDate() 
+		{
 			Item item = updateFrom(5, 10);
 			Assert.True(item.quality == 11);
 			Assert.True(item.sellIn == 4);
 		}
 		
 		[Fact]
-		public void beforeSellDateWithMaxQuality() {
+		public void BeforeSellDateWithMaxQuality() 
+		{
 			Item item = updateFrom(5, 50);
 			Assert.True(item.quality == 50);
 			Assert.True(item.sellIn == 4);
 		}
 
 		[Fact]
-		public void onSellDate() {
+		public void OnSellDate() 
+		{
 			Item item = updateFrom(0, 10);
 			Assert.True(item.quality == 12);
 			Assert.True(item.sellIn == -1);
 		}
 
 		[Fact]
-		public void onSellDateWithMaxQuality() {
+		public void OnSellDateWithMaxQuality() 
+		{
 			Item item = updateFrom(0, 50);
 			Assert.True(item.quality == 50);
 			Assert.True(item.sellIn == -1);
 		}
 
 		[Fact]
-		public void afterSellDate() {
+		public void AfterSellDate() 
+		{
 			Item item = updateFrom(-10, 10);
 			Assert.True(item.quality == 12);
 			Assert.True(item.sellIn == -11);
 		}
 
 		[Fact]
-		public void afterSellDateWithMaxQuality() {
+		public void AfterSellDateWithMaxQuality() 
+		{
 			Item item = updateFrom(-10, 50);
 			Assert.True(item.quality == 50);
 			Assert.True(item.sellIn == -11);

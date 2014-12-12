@@ -15,8 +15,9 @@ namespace GildedRose.UnitTests
 		}
 
 		[Fact]
-		public void test() {
-			GildedRose.updateQuality(items);
+		public void Test() 
+		{
+			GildedRose.UpdateQuality(items);
 
 			Assert.Equal(9, items[0].quality);
 			Assert.Equal(4, items[0].sellIn);

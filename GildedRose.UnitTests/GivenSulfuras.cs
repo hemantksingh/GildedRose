@@ -8,31 +8,35 @@ namespace GildedRose.UnitTests
 
 		static String SULFURAS = "Sulfuras, Hand of Ragnaros";
 		
-		private Item updateFrom(int initialSellIn, int initialQuality) {
+		private Item UpdateFrom(int initialSellIn, int initialQuality) 
+		{
 			Item item = new Item(SULFURAS, initialSellIn, initialQuality);
 			List<Item> items = new List<Item>();
 			items.Add(item);
-			GildedRose.updateQuality(items);
+			GildedRose.UpdateQuality(items);
 			return item;
 		}
 
 		[Fact]
-		public void beforeSellDate() {
-			Item item = updateFrom(5, 80);
+		public void BeforeSellDate() 
+		{
+			Item item = UpdateFrom(5, 80);
 			Assert.True(item.quality == 80);
 			Assert.True(item.sellIn == 5);
 		}
 
 		[Fact]
-		public void onSellDate() {
-			Item item = updateFrom(0, 80);
+		public void OnSellDate() 
+		{
+			Item item = UpdateFrom(0, 80);
 			Assert.True(item.quality == 80);
 			Assert.True(item.sellIn == 0);
 		}
 
 		[Fact]
-		public void afterSellDate() {
-			Item item = updateFrom(-10, 80);
+		public void AfterSellDate() 
+		{
+			Item item = UpdateFrom(-10, 80);
 			Assert.True(item.quality == 80);
 			Assert.True(item.sellIn == -10);
 		}

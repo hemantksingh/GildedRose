@@ -6,7 +6,7 @@ namespace GildedRose
 {
     public class GildedRose
     {
-    	public static void updateQuality(List<Item> items) 
+    	public static void UpdateQuality(List<Item> items) 
     	{
 			for (int i = 0; i < items.Count(); i++) 
 			{
