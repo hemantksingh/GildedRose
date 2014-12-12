@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"item",
+				"items"
+			],
+			[
+				"us",
+				"using	using"
+			],
+			[
 				"mar",
 				"margin-top"
 			],
@@ -180,85 +188,85 @@
 	"buffers":
 	[
 		{
-			"file": ".gitignore",
+			"file": "build.sh",
 			"settings":
 			{
-				"buffer_size": 185,
+				"buffer_size": 167,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "GuildedRose.UnitTests/GuildedRose.UnitTests.csproj",
+			"file": "GildedRose/GildedRose.cs",
 			"settings":
 			{
-				"buffer_size": 2566,
+				"buffer_size": 1750,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\n\nnamespace GuildedRose\n{\n    public class GildedRose\n    {\n    	public static void UpdateQuality(List<Item> items) \n    	{\n			for (int i = 0; i < items.Count(); i++) \n			{\n				if (\"Aged Brie\" != items[i].Name && \"Backstage passes to a TAFKAL80ETC concert\" != items[i].Name) \n				{\n					if (items[i].Quality > 0) \n					{\n						if (\"Sulfuras, Hand of Ragnaros\" != items[i].Name) \n						{\n							items[i].Quality = items[i].Quality - 1;\n						}\n					}\n				} \n				else \n				{\n					if (items[i].Quality < 50) \n					{\n						items[i].Quality = items[i].Quality + 1;\n\n						if (\"Backstage passes to a TAFKAL80ETC concert\" == items[i].Name) \n						{\n							if (items[i].SellIn < 11) \n							{\n								if (items[i].Quality < 50) \n								{\n									items[i].Quality = items[i].Quality + 1;\n								}\n							}\n\n							if (items[i].SellIn < 6) \n							{\n								if (items[i].Quality < 50) \n								{\n									items[i].Quality = items[i].Quality + 1;\n								}\n							}\n						}\n					}\n				}\n\n				if (\"Sulfuras, Hand of Ragnaros\" != items[i].Name) \n				{\n					items[i].SellIn = items[i].SellIn - 1;\n				}\n\n				if (items[i].SellIn < 0) \n				{\n					if (\"Aged Brie\" != items[i].Name) \n					{\n						if (\"Backstage passes to a TAFKAL80ETC concert\" != items[i].Name) \n						{\n							if (items[i].Quality > 0) \n							{\n								if (\"Sulfuras, Hand of Ragnaros\" != items[i].Name) \n								{\n									items[i].Quality = items[i].Quality - 1;\n								}\n							}\n						} \n						else \n						{\n							items[i].Quality = items[i].Quality - items[i].Quality;\n						}\n					} else \n					{\n						if (items[i].Quality < 50) \n						{\n							items[i].Quality =items[i].Quality + 1;\n						}\n					}\n				}\n			}\n		}\n    }\n}",
-			"file": "GuildedRose/GildedRose.cs",
-			"file_size": 1751,
-			"file_write_time": 130628920620000000,
+			"file": "GildedRose.sublime-project",
 			"settings":
 			{
-				"buffer_size": 1751,
+				"buffer_size": 222,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "GuildedRose.UnitTests/GivenABackstagePass.cs",
+			"file": "GildedRose.UnitTests/GivenABackstagePass.cs",
 			"settings":
 			{
-				"buffer_size": 2515,
+				"buffer_size": 2517,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "GuildedRose.UnitTests/GivenAConjuredItem.cs",
+			"file": "GildedRose.UnitTests/GivenAConjuredItem.cs",
 			"settings":
 			{
-				"buffer_size": 1371,
+				"buffer_size": 1391,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "GuildedRose.UnitTests/GivenANormalItem.cs",
+			"file": "GildedRose.UnitTests/GivenAgedBrie.cs",
 			"settings":
 			{
-				"buffer_size": 1000,
+				"buffer_size": 1396,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "GuildedRose.UnitTests/GivenAgedBrie.cs",
+			"file": "GildedRose.UnitTests/GivenANormalItem.cs",
 			"settings":
 			{
-				"buffer_size": 1376,
+				"buffer_size": 1014,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "GuildedRose.UnitTests/GivenSeveralItems.cs",
+			"file": "GildedRose.UnitTests/GivenSeveralItems.cs",
 			"settings":
 			{
-				"buffer_size": 537,
+				"buffer_size": 539,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "GuildedRose.UnitTests/GivenSulfuras.cs",
+			"contents": "using System;\nusing System.Collections.Generic;\nusing Xunit;\n\nnamespace GildedRose.UnitTests\n{\n	public class GivenSulfuras {\n\n		static String SULFURAS = \"Sulfuras, Hand of Ragnaros\";\n		\n		private Item UpdateFrom(int initialSellIn, int initialQuality) \n		{\n			Item item = new Item(SULFURAS, initialSellIn, initialQuality);\n			item.\n			List<Item> items = new List<Item>();\n			items.Add(item);\n			GildedRose.UpdateQuality(items);\n			return item;\n		}\n\n		[Fact]\n		public void BeforeSellDate() \n		{\n			Item item = UpdateFrom(5, 80);\n			Assert.True(item.quality == 80);\n			Assert.True(item.sellIn == 5);\n		}\n\n		[Fact]\n		public void OnSellDate() \n		{\n			Item item = UpdateFrom(0, 80);\n			Assert.True(item.quality == 80);\n			Assert.True(item.sellIn == 0);\n		}\n\n		[Fact]\n		public void AfterSellDate() \n		{\n			Item item = UpdateFrom(-10, 80);\n			Assert.True(item.quality == 80);\n			Assert.True(item.sellIn == -10);\n		}\n	}\n}\n",
+			"file": "GildedRose.UnitTests/GivenSulfuras.cs",
+			"file_size": 904,
+			"file_write_time": 130628944230000000,
 			"settings":
 			{
-				"buffer_size": 893,
+				"buffer_size": 913,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "GuildedRose/Item.cs",
+			"file": "GildedRose/Item.cs",
 			"settings":
 			{
-				"buffer_size": 709,
+				"buffer_size": 708,
 				"line_ending": "Unix"
 			}
 		}
@@ -315,15 +323,45 @@
 	"expanded_folders":
 	[
 		"/Users/andrewstewart/Code/GildedRose",
-		"/Users/andrewstewart/Code/GildedRose/GuildedRose",
-		"/Users/andrewstewart/Code/GildedRose/GuildedRose.UnitTests"
+		"/Users/andrewstewart/Code/GildedRose/GildedRose",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose.UnitTests"
 	],
 	"file_history":
 	[
+		"/Users/andrewstewart/Code/GildedRose/GildedRose.UnitTests/build.sh",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose/Properties/AssemblyInfo.cs",
+		"/Users/andrewstewart/Code/GildedRose/.gitignore",
+		"/Users/andrewstewart/Code/GildedRose/GuildedRose.UnitTests/GuildedRose.UnitTests.csproj",
+		"/Users/andrewstewart/Code/GildedRose/GuildedRose/GildedRose.cs",
+		"/Users/andrewstewart/Code/GildedRose/GuildedRose.UnitTests/GivenABackstagePass.cs",
+		"/Users/andrewstewart/Code/GildedRose/GuildedRose.UnitTests/GivenAConjuredItem.cs",
+		"/Users/andrewstewart/Code/GildedRose/GuildedRose.UnitTests/GivenANormalItem.cs",
+		"/Users/andrewstewart/Code/GildedRose/GuildedRose.UnitTests/GivenAgedBrie.cs",
+		"/Users/andrewstewart/Code/GildedRose/GuildedRose.UnitTests/GivenSeveralItems.cs",
+		"/Users/andrewstewart/Code/GildedRose/GuildedRose.UnitTests/GivenSulfuras.cs",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose.sublime-project",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose.UnitTests/GivenABackstagePass.cs",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose.UnitTests/GivenAConjuredItem.cs",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose.UnitTests/GivenAgedBrie.cs",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose.UnitTests/GivenANormalItem.cs",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose.UnitTests/GivenSeveralItems.cs",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose.UnitTests/GivenSulfuras.cs",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose.UnitTests/GuildedRose.UnitTests.csproj",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose.UnitTests/obj/Debug/GuildedRose.UnitTests.csproj.FilesWrittenAbsolute.txt",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose.UnitTests/obj/Debug/GuildedRose.UnitTests.dll.mdb",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose.UnitTests/Properties/AssemblyInfo.cs",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose/bin/Debug/GuildedRose.dll.mdb",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose/GildedRose.cs",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose/GuildedRose.csproj",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose/Item.cs",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose/obj/Debug/GuildedRose.csproj.FilesWrittenAbsolute.txt",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose/obj/Debug/GuildedRose.dll.mdb",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose.UnitTests/bin/Debug/GuildedRose.dll.mdb",
+		"/Users/andrewstewart/Code/GildedRose/GildedRose.UnitTests/bin/Debug/GuildedRose.UnitTests.dll.mdb",
+		"/Users/andrewstewart/Code/GildedRose/GuildedRose/Item.cs",
 		"/Users/andrewstewart/Code/GildedRose/GuildedRose.UnitTests/obj/Debug/GuildedRose.UnitTests.csproj.FilesWrittenAbsolute.txt",
 		"/Users/andrewstewart/Code/GildedRose/GuildedRose/obj/Debug/GuildedRose.csproj.FilesWrittenAbsolute.txt",
 		"/Users/andrewstewart/Code/GildedRose/GuildedRose/GuildedRose.csproj",
-		"/Users/andrewstewart/Code/GildedRose/GuildedRose/GildedRose.cs",
 		"/Users/andrewstewart/Code/wizzer/views/index.jade",
 		"/Users/andrewstewart/Code/wizzer/lib/pageRepository.js",
 		"/Users/andrewstewart/Code/wizzer/package.json",
@@ -384,6 +422,8 @@
 		"height": 106.0,
 		"where_history":
 		[
+			"/Users/andrewstewart/Code/wbl-node/files,/Users/andrewstewart/Code/GildedRose",
+			"-node_modules/*.js,/Users/andrewstewart/Code/wbl-node/files,/Users/andrewstewart/Code/GildedRose",
 			"-node_modules/*.js,/Users/andrewstewart/Code/wbl-node/files",
 			"-node_modules/*.js",
 			"-node_modules",
@@ -395,6 +435,23 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"updateFrom",
+			"{",
+			"{\n",
+			"{",
+			"before",
+			"{",
+			"after",
+			"on",
+			"o",
+			"bef",
+			"{",
+			"updateQuality",
+			"GuildedRose",
+			"css",
+			"sln",
+			"testconsoleprj",
+			"folder_exclude_patterns",
 			"assertTrue",
 			"Test",
 			"updateQuality",
@@ -505,24 +562,7 @@
 			"then",
 			"denodeify",
 			"findOnePromise",
-			"pages",
-			"pagesCollection",
-			"collections",
-			"err",
-			"pages",
-			"callback",
-			"denodify",
-			"err",
-			"callback",
-			"auth",
-			"failure",
-			"logout",
-			"username",
-			"text",
-			"username",
-			"text",
-			"POST",
-			"inserting"
+			"pages"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -530,6 +570,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"GildedRose"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -540,29 +581,29 @@
 	"groups":
 	[
 		{
-			"selected": 8,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": ".gitignore",
+					"file": "build.sh",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 185,
+						"buffer_size": 167,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								184,
-								184
+								55,
+								55
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -573,290 +614,53 @@
 				},
 				{
 					"buffer": 1,
-					"file": "GuildedRose.UnitTests/GuildedRose.UnitTests.csproj",
+					"file": "GildedRose/GildedRose.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2566,
+						"buffer_size": 1750,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1009,
-								1009
+								150,
+								150
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "GuildedRose/GildedRose.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1751,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								189,
-								189
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "GuildedRose.UnitTests/GivenABackstagePass.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2515,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								474,
-								478
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "GuildedRose.UnitTests/GivenAConjuredItem.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1371,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								534,
-								534
-							],
-							[
-								568,
-								568
-							],
-							[
-								694,
-								694
-							],
-							[
-								728,
-								728
-							],
-							[
-								838,
-								838
-							],
-							[
-								872,
-								872
-							],
-							[
-								995,
-								995
-							],
-							[
-								1029,
-								1029
-							],
-							[
-								1145,
-								1145
-							],
-							[
-								1179,
-								1179
-							],
-							[
-								1308,
-								1308
-							],
-							[
-								1342,
-								1342
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "GuildedRose.UnitTests/GivenANormalItem.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1000,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								440,
-								440
-							],
-							[
-								454,
-								454
-							],
-							[
-								590,
-								590
-							],
-							[
-								604,
-								604
-							],
-							[
-								737,
-								737
-							],
-							[
-								751,
-								751
-							],
-							[
-								890,
-								890
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "GuildedRose.UnitTests/GivenAgedBrie.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1376,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								61,
-								61
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "GuildedRose.UnitTests/GivenSeveralItems.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 537,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								355,
-								355
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 388.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "GuildedRose.UnitTests/GivenSulfuras.cs",
+					"buffer": 2,
+					"file": "GildedRose.sublime-project",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 893,
+						"buffer_size": 222,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								847,
-								847
+								145,
+								145
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C#/C#.tmLanguage"
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -866,39 +670,230 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "GuildedRose/Item.cs",
+					"buffer": 3,
+					"file": "GildedRose.UnitTests/GivenABackstagePass.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 709,
+						"buffer_size": 2517,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								375,
-								375
-							],
-							[
-								512,
-								512
-							],
-							[
-								653,
-								653
+								282,
+								282
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C#/C#.tmLanguage"
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "GildedRose.UnitTests/GivenAConjuredItem.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1391,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1091,
+								1091
+							],
+							[
+								1245,
+								1245
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "GildedRose.UnitTests/GivenAgedBrie.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1396,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1088,
+								1088
+							],
+							[
+								1245,
+								1245
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 157.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "GildedRose.UnitTests/GivenANormalItem.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1014,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								194,
+								194
+							],
+							[
+								495,
+								495
+							],
+							[
+								644,
+								644
+							],
+							[
+								797,
+								797
+							],
+							[
+								953,
+								953
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "GildedRose.UnitTests/GivenSeveralItems.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 539,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								412,
+								412
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "GildedRose.UnitTests/GivenSulfuras.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 913,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								330,
+								330
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "GildedRose/Item.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 708,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -958,6 +953,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"item",
+				"GildedRose/Item.cs"
+			],
 			[
 				"sul",
 				"GuildedRose.UnitTests/GivenSulfuras.cs"
