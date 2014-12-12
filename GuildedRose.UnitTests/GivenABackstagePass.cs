@@ -17,7 +17,7 @@ namespace GuildedRose.UnitTests
 		}
 
 		[Fact]
-		public void longBeforeSellDate() 
+		public void LongBeforeSellDate() 
 		{
 			Item item = UpdateFrom(11, 10);
 			Assert.True(item.quality == 11);
@@ -25,7 +25,7 @@ namespace GuildedRose.UnitTests
 		}
 
 		[Fact]
-		public void longBeforeSellDateAtMaxQuality() 
+		public void LongBeforeSellDateAtMaxQuality() 
 		{
 			Item item = UpdateFrom(11, 50);
 			Assert.True(item.quality == 50);
@@ -33,7 +33,7 @@ namespace GuildedRose.UnitTests
 		}
 
 		[Fact]
-		public void mediumCloseSellDateUpperBound() 
+		public void MediumCloseSellDateUpperBound() 
 		{
 			Item item = UpdateFrom(10, 10);
 			Assert.True(item.quality == 12);
@@ -41,7 +41,7 @@ namespace GuildedRose.UnitTests
 		}
 
 		[Fact]
-		public void mediumCloseSellDateUpperBoundAtMaxQuality() 
+		public void MediumCloseSellDateUpperBoundAtMaxQuality() 
 		{
 			Item item = UpdateFrom(10, 50);
 			Assert.True(item.quality == 50);
@@ -49,7 +49,7 @@ namespace GuildedRose.UnitTests
 		}
 
 		[Fact]
-		public void mediumCloseSellDateLowerBound() 
+		public void MediumCloseSellDateLowerBound() 
 		{
 			Item item = UpdateFrom(6, 10);
 			Assert.True(item.quality == 12);
@@ -57,7 +57,7 @@ namespace GuildedRose.UnitTests
 		}
 
 		[Fact]
-		public void mediumCloseSellDateLowerBoundAtMaxQuality() 
+		public void MediumCloseSellDateLowerBoundAtMaxQuality() 
 		{
 			Item item = UpdateFrom(6, 50);
 			Assert.True(item.quality == 50);
@@ -65,7 +65,7 @@ namespace GuildedRose.UnitTests
 		}
 
 		[Fact]
-		public void veryCloseToSellDateUpperBound() 
+		public void VeryCloseToSellDateUpperBound() 
 		{
 			Item item = UpdateFrom(5, 10);
 			Assert.True(item.quality == 13);
@@ -73,7 +73,7 @@ namespace GuildedRose.UnitTests
 		}
 
 		[Fact]
-		public void veryCloseToSellDateUpperBoundAtMaxQuality() 
+		public void VeryCloseToSellDateUpperBoundAtMaxQuality() 
 		{
 			Item item = UpdateFrom(5, 50);
 			Assert.True(item.quality == 50);
@@ -81,7 +81,7 @@ namespace GuildedRose.UnitTests
 		}
 
 		[Fact]
-		public void veryCloseToSellDateLowerBound() 
+		public void VeryCloseToSellDateLowerBound() 
 		{
 			Item item = UpdateFrom(1, 10);
 			Assert.True(item.quality == 13);
@@ -89,7 +89,7 @@ namespace GuildedRose.UnitTests
 		}
 
 		[Fact]
-		public void veryCloseToSellDateLowerBoundAtMaxQuality() 
+		public void VeryCloseToSellDateLowerBoundAtMaxQuality() 
 		{
 			Item item = UpdateFrom(1, 50);
 			Assert.True(item.quality == 50);
@@ -97,7 +97,7 @@ namespace GuildedRose.UnitTests
 		}
 
 		[Fact]
-		public void onSellDate() 
+		public void OnSellDate() 
 		{
 			Item item = UpdateFrom(0, 10);
 			Assert.True(item.quality == 0);
@@ -105,7 +105,7 @@ namespace GuildedRose.UnitTests
 		}
 
 		[Fact]
-		public void afterSellDate() 
+		public void AfterSellDate() 
 		{
 			Item item = UpdateFrom(-10, 10);
 			Assert.True(item.quality == 0);
