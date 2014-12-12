@@ -1,6 +1,6 @@
 using System;
 
-namespace GuildedRose
+namespace GildedRose
 {
 	public class Item 
 	{

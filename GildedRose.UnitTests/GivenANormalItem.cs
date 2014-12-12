@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace GuildedRose.UnitTests
+namespace GildedRose.UnitTests
 {
 	public class GivenANormalItem 
 	{

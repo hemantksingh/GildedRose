@@ -4,8 +4,8 @@
 		{
 			"follow_symlinks": true,
 			"path": ".",
-			"folder_exclude_patterns": ["bin", "obj"]
+			"folder_exclude_patterns": ["bin", "obj", ".nuget", ".OpenIDE", "xunit*"]
 		}
 	],
-	"solution_file": "./GuildedRose.UnitTests/GuildedRose.UnitTests.csproj"
+	"solution_file": "./GildedRose.UnitTests/GildedRose.UnitTests.csproj"
 }

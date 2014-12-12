@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{cb41ef38-823f-11e4-be41-3c15c2bea220}</ProjectGuid>
+    <ProjectGuid>{cfe0e2e1-823f-11e4-b9ae-3c15c2bea220}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GuildedRose</RootNamespace>
-    <AssemblyName>GuildedRose</AssemblyName>
+    <RootNamespace>GildedRose.UnitTests</RootNamespace>
+    <AssemblyName>GildedRose.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,11 +33,16 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="..\xunit.1.9.2\lib\net20\xunit.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GildedRose.cs" />
-    <Compile Include="Item.cs" />
+    <Compile Include="GivenABackstagePass.cs" />
+    <Compile Include="GivenAConjuredItem.cs" />
+    <Compile Include="GivenANormalItem.cs" />
+    <Compile Include="GivenAgedBrie.cs" />
+    <Compile Include="GivenSeveralItems.cs" />
+    <Compile Include="GivenSulfuras.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -47,4 +52,10 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <ProjectReference Include="..\GildedRose\GildedRose.csproj">
+      <Project>{cb41ef38-823f-11e4-be41-3c15c2bea220}</Project>
+      <Name>GildedRose</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
