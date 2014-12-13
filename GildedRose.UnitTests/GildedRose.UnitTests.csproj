@@ -54,8 +54,13 @@
   -->
   <ItemGroup>
     <ProjectReference Include="..\GildedRose\GildedRose.csproj">
-      <Project>{cb41ef38-823f-11e4-be41-3c15c2bea220}</Project>
+      <Project>{2DE7D313-9B85-423A-8DC4-0B7EB8099C8C}</Project>
       <Name>GildedRose</Name>
     </ProjectReference>
+<!--     <ProjectReference Include="..\Wbl.Infrastructure\Wbl.Infrastructure.csproj">
+      <Project>{75b316d1-bc8a-4650-844c-434a452debd2}</Project>
+      <Name>Wbl.Infrastructure</Name>
+    </ProjectReference>
+ -->
   </ItemGroup>
 </Project>
