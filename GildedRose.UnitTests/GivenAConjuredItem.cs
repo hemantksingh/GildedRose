@@ -17,7 +17,7 @@ namespace GildedRose.UnitTests
 			return item;
 		}
 
-		[Fact]
+		[Fact(Skip="Not yet implemented")]
 		public void BeforeSellDate() 
 		{
 			Item item = updateFrom(5, 10);
@@ -33,7 +33,7 @@ namespace GildedRose.UnitTests
 			Assert.Equal(4, item.sellIn);
 		}
 
-		[Fact]
+		[Fact(Skip="Not yet implemented")]
 		public void OnSellDate() 
 		{
 			Item item = updateFrom(0, 10);
@@ -49,7 +49,7 @@ namespace GildedRose.UnitTests
 			Assert.Equal(-1, item.sellIn);
 		}
 
-		[Fact]
+		[Fact(Skip="Not yet implemented")]
 		public void AfterSellDate() 
 		{
 			Item item = updateFrom(-10, 10);
