@@ -7,11 +7,11 @@ namespace GildedRose
     {
         private static readonly Dictionary<string, IProduct> Products = new Dictionary<string, IProduct>
             {
-                {"Aged Brie", new Product(new AgedBrieQualityAdjuster(2))},
+                {"Aged Brie", new Product(new QualityAdjuster(+1))},
                 {"Backstage passes to a TAFKAL80ETC concert", new Product(new BackstageQualityAdjuster(1))},
                 {"Sulfuras, Hand of Ragnaros", new SulfurasProduct()},
-                {"NORMAL ITEM", new Product(new NormalQualityAdjuster(-1))},
-                {"Conjured Mana Cake", new Product(new ConjuredQualityAdjuster(0))}
+                {"NORMAL ITEM", new Product(new QualityAdjuster(-1))},
+                {"Conjured Mana Cake", new Product(new QualityAdjuster(0))}
             };
 
         public static void UpdateQuality(List<Item> items)
@@ -28,33 +28,18 @@ namespace GildedRose
         }
     }
 
-    public class ConjuredQualityAdjuster : IAdjustQuality
+    public class QualityAdjuster : IAdjustQuality
     {
         private readonly int _defaultQuality;
 
-        public ConjuredQualityAdjuster(int defaultQuality)
+        public QualityAdjuster(int defaultQuality)
         {
             _defaultQuality = defaultQuality;
         }
 
         public int Adjust(Item item)
         {
-            return _defaultQuality;
-        }
-    }
-
-    public class NormalQualityAdjuster : IAdjustQuality
-    {
-        private readonly int _defaultQuality;
-
-        public NormalQualityAdjuster(int defaultQuality)
-        {
-            _defaultQuality = defaultQuality;
-        }
-
-        public int Adjust(Item item)
-        {
-            return item.SellIn < 0 ? -2 : _defaultQuality;
+            return item.SellIn < 0 ? 2 * _defaultQuality : _defaultQuality;
         }
     }
 
@@ -83,21 +68,6 @@ namespace GildedRose
     public interface IAdjustQuality
     {
         int Adjust(Item item);
-    }
-
-    public class AgedBrieQualityAdjuster : IAdjustQuality
-    {
-        private readonly int _qualityAdjuster;
-
-        public AgedBrieQualityAdjuster(int qualityAdjuster)
-        {
-            _qualityAdjuster = qualityAdjuster;
-        }
-
-        public int Adjust(Item item)
-        {
-            return item.SellIn < 0 ? _qualityAdjuster : +1;
-        }
     }
 
     public interface IProduct
